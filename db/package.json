@@ -1,0 +1,14 @@
+{
+  "name": "db",
+  "version": "1.0.0",
+  "description": "database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hock David",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.3.3"
+  }
+}

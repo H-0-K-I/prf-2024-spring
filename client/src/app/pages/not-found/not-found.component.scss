@@ -1,0 +1,24 @@
+@import "../../../assets/styles/variables";
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  button {
+    cursor: pointer;
+    width: 50%;
+    margin: $spacer;
+    padding: $spacer;
+    border-radius: 2rem;
+    font-weight: bolder;
+    font-size: medium;
+    background: $button-color;
+  }
+
+  button:hover {
+    background: $button-hover-color;
+    color: white;
+  }
+}

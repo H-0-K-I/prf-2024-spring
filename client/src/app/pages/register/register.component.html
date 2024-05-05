@@ -1,0 +1,59 @@
+<div class="register-container">
+  <form
+    class="register-form"
+    [formGroup]="registerForm"
+    (ngSubmit)="onRegister()"
+  >
+    <h1>Register</h1>
+    <h3>Please fill out every field</h3>
+    <input
+      formControlName="firstName"
+      type="text"
+      placeholder="First name"
+      required
+      [ngClass]="{ 'invalid-input': registerForm.get('firstName')?.errors }"
+    />
+    <input
+      formControlName="lastName"
+      type="text"
+      placeholder="Last name"
+      required
+      [ngClass]="{ 'invalid-input': registerForm.get('lastName')?.errors }"
+    />
+    <input
+      formControlName="email"
+      type="email"
+      placeholder="E-mail"
+      required
+      [ngClass]="{ 'invalid-input': registerForm.get('email')?.errors }"
+    />
+    <input
+      formControlName="username"
+      type="text"
+      placeholder="Username"
+      required
+      [ngClass]="{ 'invalid-input': registerForm.get('username')?.errors }"
+    />
+    <input
+      formControlName="password"
+      type="password"
+      placeholder="Password"
+      required
+      [ngClass]="{ 'invalid-input': registerForm.get('password')?.errors }"
+    />
+    <p>Password must be at least 6 characters wrong!</p>
+    <input
+      formControlName="confirmPassword"
+      type="password"
+      placeholder="Confirm password"
+      required
+      [ngClass]="{
+        'invalid-input': registerForm.get('confirmPassword')?.errors
+      }"
+    />
+    <div class="register-buttons-container">
+      <button type="button" routerLink="/login">Back</button>
+      <button type="submit">Regiser</button>
+    </div>
+  </form>
+</div>
