@@ -29,6 +29,11 @@ const userSchema = new Schema<User>({
     unique: true,
     minlength: 1,
   },
+  isAdmin: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 export default model("User", userSchema);

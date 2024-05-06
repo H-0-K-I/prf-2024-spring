@@ -4,7 +4,8 @@
 
 import express, { json } from "express";
 import { connectDb } from "../../db/src/index";
-import { testRouter } from "./routers/test.router";
+import { userRouter } from "./routers/user.router";
+import cors from "cors";
 
 // connectDb(String(process.env.CONNECTION_STRING))
 connectDb("mongodb://localhost:27017");
@@ -12,6 +13,23 @@ connectDb("mongodb://localhost:27017");
 const PORT = 5000;
 const app = express();
 
+const whitelist = ["http://localhost:4200"];
+
+const corsOptions = {
+  origin: (
+    origin: string | undefined,
+    callback: (err: Error | null, allowed: boolean) => void
+  ) => {
+    if (whitelist.includes(origin!)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"), false);
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(json());
 
 app.all("*", (req, _res, next) => {
@@ -19,7 +37,10 @@ app.all("*", (req, _res, next) => {
   next();
 });
 
-app.use("/api/test", testRouter);
+app.use("/api/users", userRouter);
+// app.use("/api/vehicles", vehiclesRouter);
+// app.use("/api/rentals", rentalsRouter);
+// app.use("/api/extras", extrasRouter);
 
 app.listen(PORT, () => {
   console.log("Server is listening on port: " + PORT);

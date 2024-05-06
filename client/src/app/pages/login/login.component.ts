@@ -6,6 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
+import { localStorageSetter } from '../../utils/localstorage/localstorage-setter';
+import { User } from '../../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +20,10 @@ import { RouterModule } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -28,7 +34,28 @@ export class LoginComponent implements OnInit {
 
   onLogin = () => {
     if (this.loginForm.valid) {
-      console.log('CLICK', this.loginForm.value);
+      this.authService
+        .login(
+          this.loginForm.get('username')?.value,
+          this.loginForm.get('password')?.value
+        )
+        .subscribe({
+          next: (data) => {
+            if (data) {
+              localStorageSetter('firstName', (data as User).firstName);
+              localStorageSetter('lastName', (data as User).lastName);
+              localStorageSetter('email', (data as User).email);
+              localStorageSetter('username', (data as User).username);
+              localStorageSetter('isAdmin', (data as User).isAdmin);
+              localStorageSetter('isLoggedIn', true);
+
+              // TODO navigate
+            }
+          },
+          error: (error) => {
+            console.log(error);
+          },
+        });
     } else {
       alert('Form is inavlid');
     }

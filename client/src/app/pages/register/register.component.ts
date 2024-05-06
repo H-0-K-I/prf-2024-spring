@@ -6,7 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,11 @@ import { RouterModule } from '@angular/router';
 export class RegisterComponent {
   registerForm!: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
@@ -38,7 +43,24 @@ export class RegisterComponent {
 
   onRegister = () => {
     if (this.registerForm.valid) {
-      console.log('CLICK', this.registerForm.value);
+      this.authService
+        .register(
+          this.registerForm.get('firstName')?.value,
+          this.registerForm.get('lastName')?.value,
+          this.registerForm.get('email')?.value,
+          this.registerForm.get('username')?.value,
+          this.registerForm.get('password')?.value
+        )
+        .subscribe({
+          next: (data) => {
+            if (data) {
+              this.router.navigateByUrl('/login');
+            }
+          },
+          error: (error) => {
+            console.log(error);
+          },
+        });
     } else {
       alert('Form is inavlid');
     }
