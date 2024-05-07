@@ -1,4 +1,4 @@
 <div class="unauthorized-container">
   <img src="../../../assets/images/unauthorized.png" alt="Unauthorized" />
-  <button routerLink="/">Return</button>
+  <button [routerLink]="isLoggedIn ? '/home' : '/'">Return</button>
 </div>

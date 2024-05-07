@@ -1,0 +1,18 @@
+<app-header />
+
+<div class="add-extra-container">
+  <form class="add-extra-form" [formGroup]="extraForm" (ngSubmit)="onCreate()">
+    <h1>Add Extra</h1>
+    <input
+      formControlName="name"
+      type="text"
+      placeholder="Name"
+      required
+      [ngClass]="{ 'invalid-input': extraForm.get('name')?.errors }"
+    />
+    <div class="add-extra-buttons-container">
+      <button type="button" routerLink="/admin">Back</button>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</div>

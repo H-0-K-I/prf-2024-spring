@@ -5,6 +5,7 @@ const extrasSchema = new Schema<Extra>({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 

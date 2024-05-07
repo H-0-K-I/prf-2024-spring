@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
+import { Schema } from "mongoose";
 import { createVehicle } from "../../../db/src/queries/create-vehicle";
 import { getVehicles } from "../../../db/src/queries/get-vehicles";
 import { getVehicleById } from "../../../db/src/queries/get-vehicle-by-id";
 import { deleteVehicle } from "../../../db/src/queries/delete-vehicle";
 import { updateVehicle } from "../../../db/src/queries/update-vehicle";
-import { Schema } from "mongoose";
 
 export const createVehicleService = async (req: Request, res: Response) => {
   try {

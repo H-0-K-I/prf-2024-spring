@@ -7,6 +7,7 @@ import { connectDb } from "../../db/src/index";
 import { userRouter } from "./routers/user.router";
 import cors from "cors";
 import { vehiclesRouter } from "./routers/vehicles.router";
+import { extrasRouter } from "./routers/extras.router";
 
 // connectDb(String(process.env.CONNECTION_STRING))
 connectDb("mongodb://localhost:27017");
@@ -40,7 +41,7 @@ app.all("*", (req, _res, next) => {
 
 app.use("/api/users", userRouter);
 app.use("/api/vehicles", vehiclesRouter);
-// app.use("/api/extras", extrasRouter);
+app.use("/api/extras", extrasRouter);
 // app.use("/api/rentals", rentalsRouter);
 
 app.listen(PORT, () => {

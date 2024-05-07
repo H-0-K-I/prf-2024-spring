@@ -16,10 +16,36 @@
       <td>{{ vehicle.pricePerDay }}</td>
       <td>{{ vehicle.reserved }}</td>
       <td>
-        <button (click)="handleEditButtonClick(vehicle._id)">Edit</button>
-        <button (click)="handleDeleteButtonClick(vehicle._id)">Delete</button>
+        <button (click)="handleEditVehicleButtonClick(vehicle._id)">
+          Edit
+        </button>
+        <button (click)="handleDeleteVehicleButtonClick(vehicle._id)">
+          Delete
+        </button>
       </td>
     </tr>
   </table>
 </div>
 <button class="admin-button" routerLink="/add-vehicle">Add vehicle</button>
+
+<h1>Available Extras</h1>
+<h3 *ngIf="!extras.length">No extras available</h3>
+<div *ngIf="extras.length">
+  <div *ngIf="extras.length">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let extra of extras">
+        <td>{{ extra.name }}</td>
+        <td>
+          <button (click)="handleDeleteExtraButtonClick(extra._id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<button class="admin-button" routerLink="/add-extra">Add Extra</button>

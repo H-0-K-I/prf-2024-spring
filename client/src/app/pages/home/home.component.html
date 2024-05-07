@@ -21,6 +21,12 @@
       </tr>
     </table>
   </div>
+
   <h1>Available Extras</h1>
-  TODO
+  <h3 *ngIf="!extras.length">No extras available</h3>
+  <div *ngIf="extras.length">
+    <ul>
+      <li *ngFor="let extra of extras">{{ extra.name }}</li>
+    </ul>
+  </div>
 </div>

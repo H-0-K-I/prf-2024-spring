@@ -10,6 +10,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminPermissionGuard } from './guards/admin-permission/admin-permission.guard';
 import { AddVehicleComponent } from './pages/add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './pages/edit-vehicle/edit-vehicle.component';
+import { AddExtraComponent } from './pages/add-extra/add-extra.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,11 @@ export const routes: Routes = [
   {
     path: 'add-vehicle',
     component: AddVehicleComponent,
+    canActivate: [PermissionGuard, AdminPermissionGuard],
+  },
+  {
+    path: 'add-extra',
+    component: AddExtraComponent,
     canActivate: [PermissionGuard, AdminPermissionGuard],
   },
   {
