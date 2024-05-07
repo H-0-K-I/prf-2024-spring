@@ -6,6 +6,7 @@ import express, { json } from "express";
 import { connectDb } from "../../db/src/index";
 import { userRouter } from "./routers/user.router";
 import cors from "cors";
+import { vehiclesRouter } from "./routers/vehicles.router";
 
 // connectDb(String(process.env.CONNECTION_STRING))
 connectDb("mongodb://localhost:27017");
@@ -38,9 +39,9 @@ app.all("*", (req, _res, next) => {
 });
 
 app.use("/api/users", userRouter);
-// app.use("/api/vehicles", vehiclesRouter);
-// app.use("/api/rentals", rentalsRouter);
+app.use("/api/vehicles", vehiclesRouter);
 // app.use("/api/extras", extrasRouter);
+// app.use("/api/rentals", rentalsRouter);
 
 app.listen(PORT, () => {
   console.log("Server is listening on port: " + PORT);

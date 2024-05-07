@@ -1,0 +1,25 @@
+<app-header />
+<h1>Available vehicles</h1>
+<h3 *ngIf="!vehicles.length">No vehicles available</h3>
+<div *ngIf="vehicles.length">
+  <table>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Price per day</th>
+      <th>Reserved on</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let vehicle of vehicles">
+      <td>{{ vehicle.make }}</td>
+      <td>{{ vehicle.model }}</td>
+      <td>{{ vehicle.pricePerDay }}</td>
+      <td>{{ vehicle.reserved }}</td>
+      <td>
+        <button (click)="handleEditButtonClick(vehicle._id)">Edit</button>
+        <button (click)="handleDeleteButtonClick(vehicle._id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<button class="admin-button" routerLink="/add-vehicle">Add vehicle</button>

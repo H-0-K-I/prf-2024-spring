@@ -1,0 +1,40 @@
+@import "../../../assets/styles/variables";
+
+.header-container {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  height: 5rem;
+  background: $content-bg;
+
+  h1 {
+    margin-left: $spacer;
+  }
+
+  .header-buttons-container {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    right: 0;
+    max-height: 5rem;
+  }
+
+  button {
+    cursor: pointer;
+    width: min-content;
+    max-height: 5rem;
+    margin: $spacer;
+    padding: calc($spacer * 0.75);
+    border-radius: 2rem;
+    font-weight: bolder;
+    font-size: medium;
+    background: $button-color;
+  }
+
+  button:hover {
+    background: $button-hover-color;
+    color: white;
+  }
+}

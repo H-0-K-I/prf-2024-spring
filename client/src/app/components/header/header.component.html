@@ -1,1 +1,9 @@
-<p>header works!</p>
+<div class="header-container">
+  <h1>Vehicle rental service</h1>
+  <div class="header-buttons-container">
+    <button *ngIf="isAdmin" routerLink="/admin">Admin</button>
+    <button routerLink="/home">Home</button>
+    <button routerLink="/profile">Profile</button>
+    <button (click)="handleLogoff()">Logoff</button>
+  </div>
+</div>

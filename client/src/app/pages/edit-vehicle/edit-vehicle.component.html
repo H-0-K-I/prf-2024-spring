@@ -1,0 +1,43 @@
+<app-header />
+
+<h1 *ngIf="!vehicle">Error loading vehicle</h1>
+<div class="edit-vehicle-container" *ngIf="vehicle">
+  <form
+    class="edit-vehicle-form"
+    [formGroup]="vehicleForm"
+    (ngSubmit)="onEdit()"
+  >
+    <h1>Edit vehicle</h1>
+    <label for="make">Make</label>
+    <input
+      id="make"
+      formControlName="make"
+      type="text"
+      [(ngModel)]="vehicle.make"
+      required
+      [ngClass]="{ 'invalid-input': vehicleForm.get('make')?.errors }"
+    />
+    <label for="model">Model</label>
+    <input
+      id="model"
+      formControlName="model"
+      type="text"
+      [(ngModel)]="vehicle.model"
+      required
+      [ngClass]="{ 'invalid-input': vehicleForm.get('model')?.errors }"
+    />
+    <label for="ppd">Price per day</label>
+    <input
+      id="ppd"
+      formControlName="pricePerDay"
+      type="number"
+      [(ngModel)]="vehicle.pricePerDay"
+      required
+      [ngClass]="{ 'invalid-input': vehicleForm.get('pricePerDay')?.errors }"
+    />
+    <div class="edit-vehicle-buttons-container">
+      <button type="button" routerLink="/admin">Back</button>
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</div>

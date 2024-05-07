@@ -5,10 +5,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { localStorageSetter } from '../../utils/localstorage/localstorage-setter';
 import { User } from '../../../../../shared/models/user.model';
+import { LSKeys } from '../../utils/localstorage/localstorage-keys';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -42,14 +44,14 @@ export class LoginComponent implements OnInit {
         .subscribe({
           next: (data) => {
             if (data) {
-              localStorageSetter('firstName', (data as User).firstName);
-              localStorageSetter('lastName', (data as User).lastName);
-              localStorageSetter('email', (data as User).email);
-              localStorageSetter('username', (data as User).username);
-              localStorageSetter('isAdmin', (data as User).isAdmin);
-              localStorageSetter('isLoggedIn', true);
+              localStorageSetter(LSKeys.FIRSTNAME, (data as User).firstName);
+              localStorageSetter(LSKeys.LASTNAME, (data as User).lastName);
+              localStorageSetter(LSKeys.EMAIL, (data as User).email);
+              localStorageSetter(LSKeys.USERNAME, (data as User).username);
+              localStorageSetter(LSKeys.ISADMIN, (data as User).isAdmin);
+              localStorageSetter(LSKeys.ISLOGGEDIN, true);
 
-              // TODO navigate
+              this.router.navigateByUrl('/home');
             }
           },
           error: (error) => {

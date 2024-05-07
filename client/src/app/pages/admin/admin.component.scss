@@ -1,0 +1,32 @@
+@import "../../../assets/styles/variables";
+
+table {
+  width: 100%;
+
+  th,
+  td {
+    text-align: center;
+    padding: calc($spacer / 4);
+  }
+
+  button {
+    margin: 0 calc($spacer / 4);
+  }
+}
+
+.admin-button {
+  margin-top: $spacer;
+  cursor: pointer;
+  max-height: 5rem;
+  margin: $spacer;
+  padding: calc($spacer * 0.75);
+  border-radius: 2rem;
+  font-weight: bolder;
+  font-size: medium;
+  background: $button-color;
+}
+
+.admin-button:hover {
+  background: $button-hover-color;
+  color: white;
+}

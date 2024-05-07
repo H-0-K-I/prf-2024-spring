@@ -1,0 +1,37 @@
+<app-header />
+
+<div class="add-vehicle-container">
+  <form
+    class="add-vehicle-form"
+    [formGroup]="vehicleForm"
+    (ngSubmit)="onCreate()"
+  >
+    <h1>Add vehicle</h1>
+    <h3>Please fill out every field</h3>
+    <input
+      formControlName="make"
+      type="text"
+      placeholder="Make"
+      required
+      [ngClass]="{ 'invalid-input': vehicleForm.get('make')?.errors }"
+    />
+    <input
+      formControlName="model"
+      type="text"
+      placeholder="Model"
+      required
+      [ngClass]="{ 'invalid-input': vehicleForm.get('model')?.errors }"
+    />
+    <input
+      formControlName="pricePerDay"
+      type="number"
+      placeholder="Price per day"
+      required
+      [ngClass]="{ 'invalid-input': vehicleForm.get('pricePerDay')?.errors }"
+    />
+    <div class="add-vehicle-buttons-container">
+      <button type="button" routerLink="/admin">Back</button>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</div>
