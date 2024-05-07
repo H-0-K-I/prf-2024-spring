@@ -1,19 +1,19 @@
 # prf-2024-spring
 
-DB:
-MongoDB Community server és MongoDB Compass telepítése
-Compass-ban default csatlakozás (mongodb://localhost:27017)
-Új database létrehozása, adatok beillesztése
-npm i
-
-szerver:
-npm i
-npm run build
-npm run start
-
-(opcionális: dotenv konfig, .env fájl)
-
-kliens:
-npm i
-npm run build
-npm run start
+DB:<br>
+MongoDB Community server és MongoDB Compass telepítése<br>
+Compass-ban default csatlakozás (mongodb://localhost:27017)<br>
+Új database létrehozása, mellékelt adatok beillesztése<br>
+npm i<br>
+<br>
+szerver:<br>
+npm i<br>
+npm run build<br>
+npm run start<br>
+<br>
+(opcionális: dotenv konfig, .env fájl)<br>
+<br>
+kliens:<br>
+npm i<br>
+npm run build<br>
+npm run start<br>
