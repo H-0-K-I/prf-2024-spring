@@ -4,24 +4,23 @@ import { Schema, model } from "mongoose";
 const rentalSchema = new Schema<Rental>({
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "users",
     required: true,
   },
   vehicleId: {
     type: Schema.Types.ObjectId,
-    ref: "Vehicle",
+    ref: "vehicles",
     required: true,
   },
-  duration: [
-    {
-      type: Date,
-      required: true,
-    },
-  ],
+  date: {
+    type: Date,
+    required: true,
+  },
+
   extras: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Extras",
+      ref: "extras",
     },
   ],
 });

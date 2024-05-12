@@ -1,0 +1,66 @@
+@import "../../../assets/styles/variables";
+
+.add-rental-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-rental-form {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  max-width: 400px;
+  border: $contnet-border;
+  background: $content-bg;
+  border-radius: $border-radius;
+  padding: $spacer;
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    padding: $spacer;
+    border-radius: $border-radius;
+    margin: $spacer 0;
+  }
+
+  .add-rental-buttons-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    cursor: pointer;
+    width: 50%;
+    margin: $spacer;
+    padding: $spacer;
+    border-radius: 2rem;
+    font-weight: bolder;
+    font-size: medium;
+    background: $button-color;
+  }
+
+  button:hover {
+    background: $button-hover-color;
+    color: white;
+  }
+}
+
+.invalid-input {
+  border: 2px solid salmon;
+}
+
+.checkbox {
+  margin: calc($spacer / 2) !important;
+}

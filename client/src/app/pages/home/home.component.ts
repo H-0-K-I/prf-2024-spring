@@ -5,6 +5,8 @@ import { Vehicle } from '../../../../../shared/models/vehicle.model';
 import { Extra } from '../../../../../shared/models/extras.model';
 import { VehicleService } from '../../services/vehicle/vehicle.service';
 import { ExtraService } from '../../services/extra/extra.service';
+import { Router } from '@angular/router';
+import { Schema } from 'mongoose';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +21,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readonly vehicleService: VehicleService,
-    private readonly extraService: ExtraService
+    private readonly extraService: ExtraService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,5 +49,9 @@ export class HomeComponent implements OnInit {
         console.log(error);
       },
     });
+  }
+
+  handleRent(id: Schema.Types.ObjectId) {
+    this.router.navigateByUrl(`/add-rental/${id}`);
   }
 }

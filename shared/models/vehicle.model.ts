@@ -5,5 +5,4 @@ export interface Vehicle {
   make: string;
   model: string;
   pricePerDay: number;
-  reserved: Array<Date>;
 }

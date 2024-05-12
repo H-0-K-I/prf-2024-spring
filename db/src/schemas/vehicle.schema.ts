@@ -17,7 +17,6 @@ const vehicleSchema = new Schema<Vehicle>({
     required: true,
     min: 0,
   },
-  reserved: [Date],
 });
 
 export default model("Vehicle", vehicleSchema);

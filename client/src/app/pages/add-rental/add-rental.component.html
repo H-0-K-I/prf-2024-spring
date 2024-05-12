@@ -1,0 +1,34 @@
+<app-header />
+
+<div class="add-rental-container">
+  <form
+    class="add-rental-form"
+    [formGroup]="rentalForm"
+    (ngSubmit)="onCreate()"
+  >
+    <h1>Select a date</h1>
+    <input
+      formControlName="date"
+      type="date"
+      required
+      [min]="today"
+      [ngClass]="{ 'invalid-input': rentalForm.get('make')?.errors }"
+    />
+    <h3>Select additional extras (not necessary)</h3>
+    <div class="checkbox-list-container">
+      <div *ngFor="let extra of availableExtras">
+        <label [for]="extra.name">{{ extra.name }}</label>
+        <input
+          class="checkbox"
+          [id]="extra.name"
+          type="checkbox"
+          (change)="checkboxChanged(extra._id)"
+        />
+      </div>
+    </div>
+    <div class="add-rental-buttons-container">
+      <button type="button" routerLink="/home">Back</button>
+      <button type="submit">Rent</button>
+    </div>
+  </form>
+</div>

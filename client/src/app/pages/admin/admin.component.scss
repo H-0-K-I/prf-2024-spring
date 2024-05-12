@@ -1,5 +1,11 @@
 @import "../../../assets/styles/variables";
 
+.admin-page-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
 table {
   width: 100%;
 
@@ -24,6 +30,7 @@ table {
   font-weight: bolder;
   font-size: medium;
   background: $button-color;
+  width: 10rem;
 }
 
 .admin-button:hover {

@@ -11,6 +11,7 @@ import { AdminPermissionGuard } from './guards/admin-permission/admin-permission
 import { AddVehicleComponent } from './pages/add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './pages/edit-vehicle/edit-vehicle.component';
 import { AddExtraComponent } from './pages/add-extra/add-extra.component';
+import { AddRentalComponent } from './pages/add-rental/add-rental.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,11 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [PermissionGuard],
+  },
+  {
+    path: 'add-rental/:id',
+    component: AddRentalComponent,
     canActivate: [PermissionGuard],
   },
   {

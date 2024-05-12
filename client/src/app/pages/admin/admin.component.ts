@@ -7,6 +7,8 @@ import { Vehicle } from '../../../../../shared/models/vehicle.model';
 import { VehicleService } from '../../services/vehicle/vehicle.service';
 import { Extra } from '../../../../../shared/models/extras.model';
 import { ExtraService } from '../../services/extra/extra.service';
+import { RentalService } from '../../services/rental/rental.service';
+import { PopulatedRental } from '../../../../../shared/models/rental.model';
 
 @Component({
   selector: 'app-admin',
@@ -18,16 +20,19 @@ import { ExtraService } from '../../services/extra/extra.service';
 export class AdminComponent {
   vehicles: Array<Vehicle> = [];
   extras: Array<Extra> = [];
+  rentals: Array<PopulatedRental> = [];
 
   constructor(
     private readonly vehicleService: VehicleService,
     private readonly extraService: ExtraService,
+    private readonly rentalService: RentalService,
     private readonly router: Router
   ) {}
 
   ngOnInit(): void {
     this.getVehicles();
     this.getExtras();
+    this.getRentals();
   }
 
   handleEditVehicleButtonClick = (id: Schema.Types.ObjectId) => {
@@ -79,6 +84,28 @@ export class AdminComponent {
       next: (data) => {
         if (data) {
           this.extras = (data as unknown as { extras: Array<Extra> }).extras;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  };
+
+  private getRentals = () => {
+    this.rentalService.get().subscribe({
+      next: (data) => {
+        if (data) {
+          this.rentals = (
+            data as unknown as { rentals: Array<PopulatedRental> }
+          ).rentals;
+
+          this.rentals.forEach((rental) => {
+            const date = new Date(rental.date);
+            rental.date = `${date.getFullYear()}/${
+              date.getMonth() + 1
+            }/${date.getDate()}` as unknown as Date;
+          });
         }
       },
       error: (error) => {

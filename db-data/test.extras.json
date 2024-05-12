@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "663a339139c2c0e488940d4b"
+  },
+  "name": "GPS",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663a33be39c2c0e488940d55"
+  },
+  "name": "Multiple drivers",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663a33cf39c2c0e488940d59"
+  },
+  "name": "Extra Insurance",
+  "__v": 0
+}]

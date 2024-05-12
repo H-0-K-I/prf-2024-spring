@@ -1,51 +1,74 @@
 <app-header />
-<h1>Available vehicles</h1>
-<h3 *ngIf="!vehicles.length">No vehicles available</h3>
-<div *ngIf="vehicles.length">
-  <table>
-    <tr>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Price per day</th>
-      <th>Reserved on</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let vehicle of vehicles">
-      <td>{{ vehicle.make }}</td>
-      <td>{{ vehicle.model }}</td>
-      <td>{{ vehicle.pricePerDay }}</td>
-      <td>{{ vehicle.reserved }}</td>
-      <td>
-        <button (click)="handleEditVehicleButtonClick(vehicle._id)">
-          Edit
-        </button>
-        <button (click)="handleDeleteVehicleButtonClick(vehicle._id)">
-          Delete
-        </button>
-      </td>
-    </tr>
-  </table>
-</div>
-<button class="admin-button" routerLink="/add-vehicle">Add vehicle</button>
-
-<h1>Available Extras</h1>
-<h3 *ngIf="!extras.length">No extras available</h3>
-<div *ngIf="extras.length">
-  <div *ngIf="extras.length">
+<div class="admin-page-container">
+  <h1>Available vehicles</h1>
+  <h3 *ngIf="!vehicles.length">No vehicles available</h3>
+  <div *ngIf="vehicles.length">
     <table>
       <tr>
-        <th>Name</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Price per day</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor="let extra of extras">
-        <td>{{ extra.name }}</td>
+      <tr *ngFor="let vehicle of vehicles">
+        <td>{{ vehicle.make }}</td>
+        <td>{{ vehicle.model }}</td>
+        <td>{{ vehicle.pricePerDay }}</td>
         <td>
-          <button (click)="handleDeleteExtraButtonClick(extra._id)">
+          <button (click)="handleEditVehicleButtonClick(vehicle._id)">
+            Edit
+          </button>
+          <button (click)="handleDeleteVehicleButtonClick(vehicle._id)">
             Delete
           </button>
         </td>
       </tr>
     </table>
   </div>
+  <button class="admin-button" routerLink="/add-vehicle">Add vehicle</button>
+
+  <h1>Available Extras</h1>
+  <h3 *ngIf="!extras.length">No extras available</h3>
+  <div *ngIf="extras.length">
+    <div *ngIf="extras.length">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let extra of extras">
+          <td>{{ extra.name }}</td>
+          <td>
+            <button (click)="handleDeleteExtraButtonClick(extra._id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <button class="admin-button" routerLink="/add-extra">Add Extra</button>
+
+  <h1>Rentals</h1>
+  <h3 *ngIf="!rentals.length">No data of rentals</h3>
+  <div *ngIf="rentals.length">
+    <table>
+      <tr>
+        <th>User</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Rented on</th>
+        <th>Extras</th>
+      </tr>
+      <tr *ngFor="let rental of rentals">
+        <td>{{ rental.userId.username }}</td>
+        <td>{{ rental.vehicleId.make }}</td>
+        <td>{{ rental.vehicleId.model }}</td>
+        <td>{{ rental.date }}</td>
+        <td>
+          <p *ngFor="let extra of rental.extras">{{ extra.name }}</p>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
-<button class="admin-button" routerLink="/add-extra">Add Extra</button>

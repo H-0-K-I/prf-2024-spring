@@ -10,5 +10,29 @@
   <div class="break"></div>
   <h3>E-mail address:</h3>
   <p>{{ email }}</p>
-  <br />
+  <div class="break"></div>
+  <h1>Rentals</h1>
+  <div class="break"></div>
+  <h3 *ngIf="!rentals.length">No rentals yet</h3>
+  <div *ngIf="rentals.length">
+    <table>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Rented on</th>
+        <th>Extras</th>
+      </tr>
+      <tr *ngFor="let rental of rentals">
+        <td>{{ rental.vehicleId.make }}</td>
+        <td>{{ rental.vehicleId.model }}</td>
+        <td>{{ rental.date }}</td>
+        <td>
+          <p *ngFor="let extra of rental.extras">{{ extra.name }}</p>
+        </td>
+        <td *ngIf="compareDates(rental.date)">
+          <button (click)="deleteRental(rental._id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

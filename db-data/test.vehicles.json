@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "66393c9c024a223767505a52"
+  },
+  "make": "Audi",
+  "model": "A4",
+  "pricePerDay": 300,
+  "reserved": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663a342239c2c0e488940d62"
+  },
+  "make": "Toyota",
+  "model": "Yaris",
+  "pricePerDay": 180,
+  "reserved": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663a342f39c2c0e488940d66"
+  },
+  "make": "Ford",
+  "model": "Transit",
+  "pricePerDay": 150,
+  "reserved": [],
+  "__v": 0
+}]
